@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Credit Card Risk Web Service</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#060a12',
+                            900: '#0b132b',
+                            850: '#111b38',
+                            800: '#1c2541',
+                            700: '#2a365c',
+                        },
+                        indigo: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.22) 0%, rgba(11, 19, 43, 0) 70%);
+        }
+        .glass-card {
+            background: rgba(28, 37, 65, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            background: rgba(30, 41, 75, 0.7);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.25);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b132b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1c2541;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+<body class="font-sans bg-navy-900 text-slate-200 antialiased selection:bg-indigo-600 selection:text-white min-h-screen flex flex-col justify-center">
+    <!-- Main Content -->
+    <main class="py-12 sm:py-20">
+        <!-- Hero Section -->
+        <section id="home" class="relative hero-glow overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Center Container -->
+                <div class="flex flex-col items-center text-center space-y-8">
+                    
+                    <!-- Security Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-semibold backdrop-blur-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>PCI-DSS Level 1 Compliant Risk Engine</span>
+                    </div>
+
+                    <!-- Main Welcome Title -->
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-4xl">
+                        Welcome to <br />
+                        <span class="gradient-text">Credit Card Risk Web Service</span>
+                    </h1>
+
+                    <!-- Subtitle / Informative description -->
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-3xl leading-relaxed font-normal">
+                        An enterprise-grade risk intelligence platform designed for banks, fintech platforms, and merchants. Predict fraudulent transactions, assess cardholder default probabilities, and enforce real-time compliance with millisecond latencies.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMobileMenu() {
+                if (!mobileMenu) return;
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    if (menuIconOpen) menuIconOpen.classList.add('hidden');
+                    if (menuIconClose) menuIconClose.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    if (menuIconOpen) menuIconOpen.classList.remove('hidden');
+                    if (menuIconClose) menuIconClose.classList.add('hidden');
+                }
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            const demoAmount = document.getElementById('demo-amount');
+            const demoAmountVal = document.getElementById('demo-amount-val');
+            const demoLocation = document.getElementById('demo-location');
+            const demoVelocity = document.getElementById('demo-velocity');
+            const demoDevice = document.getElementById('demo-device');
+
+            const scoreDisplay = document.getElementById('risk-score-display');
+            const riskBadge = document.getElementById('risk-badge');
+            const riskRecommendation = document.getElementById('risk-recommendation');
+
+            function calculateRisk() {
+                if (!demoAmount || !scoreDisplay || !riskBadge || !riskRecommendation) return;
+
+                const amount = parseFloat(demoAmount.value) || 0;
+                const location = demoLocation ? demoLocation.value : 'domestic';
+                const velocity = demoVelocity ? demoVelocity.value : '1';
+                const device = demoDevice ? demoDevice.value : 'known';
+
+                if (demoAmountVal) {
+                    demoAmountVal.textContent = '$ ' + amount.toLocaleString();
+                }
+
+                let score = 0.05;
+
+                if (amount > 10000) score += 0.25;
+                else if (amount > 5000) score += 0.15;
+                else if (amount > 1000) score += 0.05;
+
+                if (location === 'domestic_travel') score += 0.10;
+                else if (location === 'international') score += 0.35;
+                else if (location === 'vpn') score += 0.45;
+
+                if (velocity === '3') score += 0.15;
+                else if (velocity === '10') score += 0.35;
+
+                if (device === 'new') score += 0.15;
+                else if (device === 'emulator') score += 0.35;
+
+                score = Math.min(Math.max(score, 0.01), 0.99);
+
+                scoreDisplay.textContent = score.toFixed(2);
+
+                if (score < 0.30) {
+                    scoreDisplay.className = "text-5xl font-black font-mono text-emerald-400 tracking-tight transition-colors duration-300";
+                    riskBadge.className = "py-2 px-4 rounded-xl font-bold text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block w-full transition-all duration-300";
+                    riskBadge.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> LOW RISK - AUTO APPROVED`;
+                    riskRecommendation.textContent = "Transaction matches standard trusted patterns. Zero step-up authentication required.";
+                } else if (score < 0.65) {
+                    scoreDisplay.className = "text-5xl font-black font-mono text-amber-400 tracking-tight transition-colors duration-300";
+                    riskBadge.className = "py-2 px-4 rounded-xl font-bold text-sm bg-amber-500/10 text-amber-400 border border-amber-500/30 inline-block w-full transition-all duration-300";
+                    riskBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> MEDIUM RISK - TRIGGER 3DS / 2FA`;
+                    riskRecommendation.textContent = "Moderate anomaly detected. Prompt cardholder for 3D-Secure 2FA verification.";
+                } else {
+                    scoreDisplay.className = "text-5xl font-black font-mono text-red-500 tracking-tight transition-colors duration-300";
+                    riskBadge.className = "py-2 px-4 rounded-xl font-bold text-sm bg-red-500/10 text-red-400 border border-red-500/30 inline-block w-full transition-all duration-300";
+                    riskBadge.innerHTML = `<i class="fa-solid fa-ban mr-1.5"></i> HIGH RISK - BLOCK TRANSACTION`;
+                    riskRecommendation.textContent = "High probability of fraud or compromised credit card details. Automated block enforced.";
+                }
+            }
+
+            if (demoAmount) demoAmount.addEventListener('input', calculateRisk);
+            if (demoLocation) demoLocation.addEventListener('change', calculateRisk);
+            if (demoVelocity) demoVelocity.addEventListener('change', calculateRisk);
+            if (demoDevice) demoDevice.addEventListener('change', calculateRisk);
+
+            calculateRisk();
+        });
+    </script>
+</body>
+</html>
