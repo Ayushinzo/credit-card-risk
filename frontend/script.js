@@ -1,5 +1,5 @@
 // Change this if your FastAPI server runs somewhere else
-const API_URL = 'http://127.0.0.1:8000/predict';
+const API_URL = 'https://credit-risk-checker-e7lc.onrender.com/predict';
 
 const $ = (id) => document.getElementById(id);
 const form = $('form');
